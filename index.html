@@ -217,6 +217,65 @@
         </div>
     </div>
 
+    <div class="project">
+        <img src="images/igvc_costmap_test.gif" alt="Real-vehicle test: three camera feeds fused into a bird's-eye-view costmap">
+        <div class="project-text">
+            <h3>IGVC Perception-to-Costmap Stack (Sim-to-Real)</h3>
+            <p>
+                Perception and Nav2 obstacle-avoidance stack for our IGVC ground vehicle, which must stay between painted
+                white lines and avoid traffic cones. Three cameras are fused into a bird's-eye-view costmap that Nav2 plans
+                on, combining TwinLiteNet road segmentation, YOLOv8 TensorRT obstacle detection, and a temporal filter. The
+                same ROS2 stack is validated in CARLA with the car's exact camera layout, then deployed on the vehicle's
+                NVIDIA Jetson Orin. I calibrated the cameras on the real car with two independent methods that agreed to
+                within about 1&deg;.
+            </p>
+            <p class="tech">Python, ROS2, Nav2, CARLA, TensorRT, YOLOv8, OpenCV, NVIDIA Jetson</p>
+            <p>
+                <strong>Shown:</strong> on-vehicle test &mdash; live right, left, and front camera feeds (left) building the costmap (right)
+            </p>
+            <div class="project-links">
+                <a href="https://github.com/arassal/carla-nav2-avl">[Code]</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="project">
+        <img src="images/carla_segmentation_compare.jpg" alt="CARLA camera frame and model segmentation prediction">
+        <div class="project-text">
+            <h3>CARLA-Trained Segmentation &amp; BEV Pipeline</h3>
+            <p>
+                A YOLOv8n-seg model trained on 15K synthetic frames from the CARLA simulator, segmenting road, lane lines,
+                vehicles, and traffic infrastructure across a three-camera rig. Masks are projected into a bird's-eye-view
+                costmap with inverse perspective mapping and passed to the ROS2 Nav2 stack, with a Flask dashboard
+                showing live camera, segmentation, and BEV views side by side.
+            </p>
+            <p class="tech">Python, PyTorch, Ultralytics YOLOv8, CARLA, ONNX, ROS2, Nav2, Flask</p>
+            <p>
+                <strong>Shown:</strong> CARLA camera frame (top) and the trained model's prediction (bottom)
+            </p>
+            <div class="project-links">
+                <a href="https://github.com/arassal/avl-perception-stack">[Code]</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="project">
+        <div class="project-text">
+            <h3>Phineas &amp; Ferb &mdash; Dual SO-ARM101 Robot Arms</h3>
+            <p>
+                A leader&ndash;follower pair of SO-ARM101 arms running on Hugging Face LeRobot. LeRobot isn't ROS-based and
+                the upstream arm repo ships no ROS packages, so I built the ROS2 / RViz visualization layer from scratch: a
+                read-only encoder bridge that publishes joint states at 30 Hz, reads calibration straight from each motor's
+                EEPROM, and hard-blocks every motor write so viewing the arms can never move them. udev rules pin each arm
+                by adapter serial so the leader and follower can't swap on reboot.
+            </p>
+            <p class="tech">Python, ROS2, RViz, LeRobot, URDF, Feetech serial servos</p>
+            <div class="project-links">
+                <a href="https://github.com/arassal/phineas-and-ferb">[Code]</a>
+            </div>
+        </div>
+    </div>
+
     <h2 class="section-title">Education</h2>
     <p>
         <strong>California State Polytechnic University, Pomona</strong><br>
